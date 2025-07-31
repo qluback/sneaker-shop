@@ -21,156 +21,97 @@ loadingManager.onProgress = function (url, itemsLoaded, itemsTotal) {
 };
 let shoe = null;
 
-// loader.load(
-//   "/sport_shoe_gltf/scene.gltf",
-//   function (gltf) {
-//     shoe = gltf.scene;
-//     shoe.position.y = 0.75;
-//     shoe.rotation.y = (-Math.PI * 7) / 8;
-//     shoe.rotation.z = -Math.PI / 8;
-//     scene.add(gltf.scene);
-//   },
-//   undefined,
-//   function (error) {
-//     console.error(error);
-//   }
-// );
-
-// loader.load(
-//   "/shoe_1_gltf/scene.gltf",
-//   function (gltf) {
-//   },
-//   undefined,
-//   function (error) {
-//     console.error(error);
-//   }
-// );
-// loader.load(
-//   "/shoe_2_gltf/scene.gltf",
-//   function (gltf) {
-//   },
-//   undefined,
-//   function (error) {
-//     console.error(error);
-//   }
-// );
-// loader.load(
-//   "/shoe_3_gltf/scene.gltf",
-//   function (gltf) {
-//   },
-//   undefined,
-//   function (error) {
-//     console.error(error);
-//   }
-// );
-// loader.load(
-//   "/shoe_4_gltf/scene.gltf",
-//   function (gltf) {
-//   },
-//   undefined,
-//   function (error) {
-//     console.error(error);
-//   }
-// );
-
 const dataShoes = [
   {
     position: { x: 1.1, y: -1.4, z: -0.6 },
-    rotation: { x: 0.753, y:-1.05, z: 0.56 },
+    rotation: { x: 0.753, y: -1.05, z: 0.56 },
     scale: { x: 1.15, y: 1.15, z: 1.15 },
-    light: null,
+    light: 4,
   },
   {
     position: { x: 0.8, y: -1.3, z: 0 },
     rotation: { x: -2.01, y: -2.06, z: -2.26 },
     scale: { x: 23, y: 23, z: 23 },
-    light: null,
+    light: 4,
   },
   {
     position: { x: -0.25, y: 0, z: 0 },
     rotation: { x: 0.942, y: -0.992, z: 0.879 },
     scale: { x: 4, y: 4, z: -4 },
-    light: null,
+    light: 4,
   },
   {
     position: { x: 0.7, y: -1.6, z: 0 },
     rotation: { x: 0, y: 0.251, z: 0.42 },
     scale: { x: 0.265, y: 0.265, z: 0.265 },
-    light: null,
+    light: 4,
   },
   {
     position: { x: 0, y: 0.75, z: 0 },
-    // rotation: { x: 0, y: (-Math.PI * 7) / 8, z: 0 },
     scale: { x: 1, y: 1, z: 1 },
     rotation: { x: 0, y: (-Math.PI * 7) / 8, z: -Math.PI / 8 },
-    light: null,
+    light: 4,
   },
   {
     position: { x: -0.5, y: 0.9, z: 0 },
-    // rotation: { x: 0, y: -Math.PI * 5 / 12, z: 0 },
     rotation: { x: 1.05, y: -1.03, z: 0.98 },
     scale: { x: 11.7, y: 11.7, z: 11.7 },
-    light: 1,
+    light: 0.5,
   },
 ];
+
 function loadShoe(index) {
-  const folder = `/shoe_${index}_gltf/`;   // Folder containing .gltf + textures
-  const file = 'scene.gltf';
-  loader.setPath(folder); // Important: sets path for ALL assets (GLTF + textures)
+  document.querySelector(".products").classList.add("loading");
   
+  const folder = `/shoe_${index}_gltf/`; // Folder containing .gltf + textures
+  const file = "scene.gltf";
+  loader.setPath(folder); // Important: sets path for ALL assets (GLTF + textures)
   loader.load(
     file,
     function (gltf) {
-      // let shoeGroup = new THREE.Group();
       shoe = gltf.scene;
-      console.log(dataShoes[index]);
+      const dataShoe = dataShoes[index - 1];
       shoe.position.set(
-        dataShoes[index - 1].position.x,
-        dataShoes[index - 1].position.y,
-        dataShoes[index - 1].position.z
+        dataShoe.position.x,
+        dataShoe.position.y,
+        dataShoe.position.z
       );
       shoe.rotation.set(
-          dataShoes[index - 1].rotation.x,
-          dataShoes[index - 1].rotation.y,
-          dataShoes[index - 1].rotation.z
-        );
-        // shoe.rotateOnWorldAxis(new THREE.Vector3(Math.PI, 0, 0), 0.01);
-        shoe.scale.set(
-          dataShoes[index - 1].scale.x,
-          dataShoes[index - 1].scale.y,
-          dataShoes[index - 1].scale.z
-        );
-        // scene.add(shoe);
-        scene.add(shoe);
-        // shoeGroup.add(shoe);
-        document.querySelector("body").dataset.shoe = index;
-        const axesHelper = new THREE.AxesHelper(4); // size = 1 unit
-        // shoe.add(axesHelper);
+        dataShoe.rotation.x,
+        dataShoe.rotation.y,
+        dataShoe.rotation.z
+      );
+      shoe.scale.set(dataShoe.scale.x, dataShoe.scale.y, dataShoe.scale.z);
+      directionalLight.intensity = dataShoe.light;
+      scene.add(shoe);
+      document.querySelector("body").dataset.shoe = index;
+      const axesHelper = new THREE.AxesHelper(4); // size = 1 unit
+      // shoe.add(axesHelper);
 
-//         const rotationFolder = gui.addFolder('Shoe Rotation');
-// rotationFolder.add(shoe.position, 'x', -10, 10, 0.1).name('X Axis');
-// rotationFolder.add(shoe.position, 'y', -10, 10, 0.1).name('Y Axis');
-// rotationFolder.add(shoe.position, 'z', -10, 10, 0.1).name('Z Axis');
-// rotationFolder.add(shoe.rotation, 'x', -Math.PI, Math.PI).name('X Axis');
-// rotationFolder.add(shoe.rotation, 'y', -Math.PI, Math.PI).name('Y Axis');
-// rotationFolder.add(shoe.rotation, 'z', -Math.PI, Math.PI).name('Z Axis');
-// rotationFolder.open();
-      },
-      undefined,
-      function (error) {
-        console.error(error);
-      }
+      //         const rotationFolder = gui.addFolder('Shoe Rotation');
+      // rotationFolder.add(shoe.position, 'x', -10, 10, 0.1).name('X Axis');
+      // rotationFolder.add(shoe.position, 'y', -10, 10, 0.1).name('Y Axis');
+      // rotationFolder.add(shoe.position, 'z', -10, 10, 0.1).name('Z Axis');
+      // rotationFolder.add(shoe.rotation, 'x', -Math.PI, Math.PI).name('X Axis');
+      // rotationFolder.add(shoe.rotation, 'y', -Math.PI, Math.PI).name('Y Axis');
+      // rotationFolder.add(shoe.rotation, 'z', -Math.PI, Math.PI).name('Z Axis');
+      // rotationFolder.open();
+      document.querySelector(".products").classList.remove("loading");
+    },
+    undefined,
+    function (error) {
+      document.querySelector(".products").classList.remove("loading");
+      console.error(error);
+    }
   );
 }
 
-// loadShoe(1);
 loadShoe(1);
 
 const productItems = document.querySelectorAll(".products-list-item");
 
 productItems.forEach((item) => {
   item.addEventListener("click", (event) => {
-    console.log(event.currentTarget.dataset.index);
     scene.remove(shoe);
     loadShoe(event.currentTarget.dataset.index);
   });
@@ -180,7 +121,7 @@ const scene = new THREE.Scene();
 
 const ambientLight = new THREE.AmbientLight("#ffffff", 3);
 scene.add(ambientLight);
-const directionalLight = new THREE.DirectionalLight("#ffffff", 1);
+const directionalLight = new THREE.DirectionalLight("#ffffff", 4);
 scene.add(directionalLight);
 
 /**
@@ -191,7 +132,6 @@ const sizes = {
   width: canvasContainer.clientWidth,
   height: canvasContainer.clientHeight,
 };
-console.log(sizes);
 
 const camera = new THREE.PerspectiveCamera(
   75,
@@ -250,3 +190,42 @@ const tick = () => {
 };
 
 tick();
+
+const updateArrowVisibility = () => {
+  const scrollLeft = productsList.scrollLeft;
+  const maxScrollLeft = productsList.scrollWidth - productsList.clientWidth;
+
+  if (scrollLeft <= 10) {
+    btnLeft.classList.add("hidden");
+  } else {
+    btnLeft.classList.remove("hidden");
+  }
+
+  if (scrollLeft >= maxScrollLeft - 10) {
+    btnRight.classList.add("hidden");
+  } else {
+    btnRight.classList.remove("hidden");
+  }
+};
+
+const productsList = document.querySelector(".products-list");
+const btnLeft = document.querySelector(".products-arrow.left");
+const btnRight = document.querySelector(".products-arrow.right");
+
+const scrollAmount = 400; // pixels to scroll per click
+
+let scrollTimeout;
+productsList.addEventListener("scroll", () => {
+  clearTimeout(scrollTimeout);
+  scrollTimeout = setTimeout(updateArrowVisibility, 100);
+});
+window.addEventListener("resize", updateArrowVisibility);
+updateArrowVisibility(); // Run once at load
+
+btnLeft.addEventListener("click", () => {
+  productsList.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+});
+
+btnRight.addEventListener("click", () => {
+  productsList.scrollBy({ left: scrollAmount, behavior: "smooth" });
+});
