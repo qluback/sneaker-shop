@@ -1,0 +1,11 @@
+Model Information:
+* title:	Nike TC 7900 Sail
+* source:	https://sketchfab.com/3d-models/nike-tc-7900-sail-fb2de7469d4f43c1aba7f878ef935cce
+* author:	SofiaWolfie (https://sketchfab.com/SofiaWolfie)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Nike TC 7900 Sail" (https://sketchfab.com/3d-models/nike-tc-7900-sail-fb2de7469d4f43c1aba7f878ef935cce) by SofiaWolfie (https://sketchfab.com/SofiaWolfie) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

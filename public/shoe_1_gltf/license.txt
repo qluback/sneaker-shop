@@ -1,0 +1,11 @@
+Model Information:
+* title:	Nike Journey Run
+* source:	https://sketchfab.com/3d-models/nike-journey-run-4c7c6acd57c347058f91ca71ec6c379b
+* author:	Lassi Kaukonen (https://sketchfab.com/thesidekick)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Nike Journey Run" (https://sketchfab.com/3d-models/nike-journey-run-4c7c6acd57c347058f91ca71ec6c379b) by Lassi Kaukonen (https://sketchfab.com/thesidekick) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
