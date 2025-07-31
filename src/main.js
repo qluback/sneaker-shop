@@ -4,7 +4,7 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import GUI from "lil-gui";
 
-const gui = new GUI();
+// const gui = new GUI();
 
 const loadingManager = new THREE.LoadingManager();
 const loader = new GLTFLoader(loadingManager);
@@ -78,33 +78,39 @@ const dataShoes = [
     position: { x: 1.1, y: -1.4, z: -0.6 },
     rotation: { x: 0.753, y:-1.05, z: 0.56 },
     scale: { x: 1.15, y: 1.15, z: 1.15 },
+    light: null,
   },
   {
     position: { x: 0.8, y: -1.3, z: 0 },
     rotation: { x: -2.01, y: -2.06, z: -2.26 },
     scale: { x: 23, y: 23, z: 23 },
+    light: null,
   },
   {
     position: { x: -0.25, y: 0, z: 0 },
     rotation: { x: 0.942, y: -0.992, z: 0.879 },
     scale: { x: 4, y: 4, z: -4 },
+    light: null,
   },
   {
     position: { x: 0.7, y: -1.6, z: 0 },
     rotation: { x: 0, y: 0.251, z: 0.42 },
     scale: { x: 0.265, y: 0.265, z: 0.265 },
+    light: null,
   },
   {
     position: { x: 0, y: 0.75, z: 0 },
     // rotation: { x: 0, y: (-Math.PI * 7) / 8, z: 0 },
     scale: { x: 1, y: 1, z: 1 },
     rotation: { x: 0, y: (-Math.PI * 7) / 8, z: -Math.PI / 8 },
+    light: null,
   },
   {
     position: { x: -0.5, y: 0.9, z: 0 },
     // rotation: { x: 0, y: -Math.PI * 5 / 12, z: 0 },
     rotation: { x: 1.05, y: -1.03, z: 0.98 },
     scale: { x: 11.7, y: 11.7, z: 11.7 },
+    light: 1,
   },
 ];
 function loadShoe(index) {
@@ -137,18 +143,18 @@ function loadShoe(index) {
         // scene.add(shoe);
         scene.add(shoe);
         // shoeGroup.add(shoe);
-        
+        document.querySelector("body").dataset.shoe = index;
         const axesHelper = new THREE.AxesHelper(4); // size = 1 unit
         // shoe.add(axesHelper);
 
-        const rotationFolder = gui.addFolder('Shoe Rotation');
-rotationFolder.add(shoe.position, 'x', -10, 10, 0.1).name('X Axis');
-rotationFolder.add(shoe.position, 'y', -10, 10, 0.1).name('Y Axis');
-rotationFolder.add(shoe.position, 'z', -10, 10, 0.1).name('Z Axis');
-rotationFolder.add(shoe.rotation, 'x', -Math.PI, Math.PI).name('X Axis');
-rotationFolder.add(shoe.rotation, 'y', -Math.PI, Math.PI).name('Y Axis');
-rotationFolder.add(shoe.rotation, 'z', -Math.PI, Math.PI).name('Z Axis');
-rotationFolder.open();
+//         const rotationFolder = gui.addFolder('Shoe Rotation');
+// rotationFolder.add(shoe.position, 'x', -10, 10, 0.1).name('X Axis');
+// rotationFolder.add(shoe.position, 'y', -10, 10, 0.1).name('Y Axis');
+// rotationFolder.add(shoe.position, 'z', -10, 10, 0.1).name('Z Axis');
+// rotationFolder.add(shoe.rotation, 'x', -Math.PI, Math.PI).name('X Axis');
+// rotationFolder.add(shoe.rotation, 'y', -Math.PI, Math.PI).name('Y Axis');
+// rotationFolder.add(shoe.rotation, 'z', -Math.PI, Math.PI).name('Z Axis');
+// rotationFolder.open();
       },
       undefined,
       function (error) {
@@ -174,7 +180,7 @@ const scene = new THREE.Scene();
 
 const ambientLight = new THREE.AmbientLight("#ffffff", 3);
 scene.add(ambientLight);
-const directionalLight = new THREE.DirectionalLight("#ffffff", 4);
+const directionalLight = new THREE.DirectionalLight("#ffffff", 1);
 scene.add(directionalLight);
 
 /**

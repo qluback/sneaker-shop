@@ -68,9 +68,9 @@ body {
   min-height: 100vh;
   height: 100vh;
   background: $blue;
+  transition: all 0.3s ease;
 
   &[data-shoe="1"] {
-    // background-color: #D8D9A0;
     background-color: #d5d8bc;
     color: #fff;
 
@@ -95,16 +95,191 @@ body {
         }
       }
     }
+
+    .products {
+      &-list {
+        &-item {
+          color: #828175;
+        }
+      }
+    }
   }
   &[data-shoe="2"] {
+    background-color: #303c52;
+    color: #fff;
+
+    .hero {
+      &-background {
+        color: #2a3548;
+      }
+
+      &-product {
+        &-name {
+          color: #e8972f;
+        }
+
+        &-button {
+          color: #2e8fd7;
+
+          &:hover {
+            background-color: #2e8fd7;
+            color: white;
+            border: 1px solid #2e8fd7;
+          }
+        }
+      }
+    }
+
+    .products {
+      &-list {
+        &-item {
+          color: #2e8fd7;
+        }
+      }
+    }
   }
   &[data-shoe="3"] {
+    background-color: #6e6d73;
+    color: #fff;
+
+    .hero {
+      &-background {
+        color: #646369;
+      }
+
+      &-product {
+        &-name {
+          color: #232323;
+        }
+
+        &-button {
+          color: #232323;
+
+          &:hover {
+            background-color: #232323;
+            color: white;
+            border: 1px solid #232323;
+          }
+        }
+      }
+    }
+
+    .products {
+      &-list {
+        &-item {
+          color: #232323;
+        }
+      }
+    }
   }
   &[data-shoe="4"] {
+    background-color: #263B92;
+    color: #fff;
+
+    .hero {
+      &-background {
+        color: #20327b;
+      }
+
+      &-product {
+        &-name {
+          color: #B2433F;
+        }
+
+        &-button {
+          color: #B2433F;
+
+          &:hover {
+            background-color: #B2433F;
+            color: white;
+            border: 1px solid #B2433F;
+          }
+        }
+      }
+    }
+
+    .products {
+      &-list {
+        &-item {
+          color: #B2433F;
+        }
+      }
+    }
   }
   &[data-shoe="5"] {
+    background-color: $white;
+    color: #333;
+
+    .header {
+      &-logo {
+        filter: invert(1);
+      }
+    }
+
+    .hero {
+      &-background {
+        color: #D4D4D4;
+      }
+
+      &-product {
+        &-name {
+          color: #080807;
+        }
+
+        &-button {
+          color: #080807;
+          border: 1px solid #080807;
+
+          &:hover {
+            background-color: #080807;
+            color: white;
+            border: 1px solid #080807;
+          }
+        }
+      }
+    }
+
+    .products {
+      &-list {
+        &-item {
+          color: #080807;
+        }
+      }
+    }
   }
   &[data-shoe="6"] {
+    background-color: #E0E1D0;
+    color: #fff;
+
+    .hero {
+      &-background {
+        color: #d3d4bc;
+      }
+
+      &-product {
+        &-name {
+          color: #444943;
+        }
+
+        &-button {
+          color: #444943;
+
+          &:hover {
+            background-color: #444943;
+            color: white;
+            border: 1px solid #444943;
+          }
+        }
+      }
+    }
+
+    .products {
+      &-list {
+        &-item {
+          color: #444943;
+        }
+      }
+    }
   }
 }
 
@@ -208,6 +383,7 @@ body {
       color: #112955;
       text-transform: uppercase;
       letter-spacing: 4rem;
+      transition: all 0.3s ease;
     }
 
     &-header {
@@ -242,6 +418,7 @@ body {
 
       &-name {
         font-size: 1.5rem;
+        transition: all 0.3s ease;
       }
 
       &-price {
@@ -318,6 +495,7 @@ canvas#webgl {
       flex: 0 0 auto; // prevents shrinking, allows horizontal scroll
       min-width: 20rem; // or whatever fits your design
       // scroll-snap-align: start; // optional for snapping
+      transition: all .3s ease;
 
       &-img {
         width: 12rem;
@@ -325,6 +503,7 @@ canvas#webgl {
         top: -6px;
         left: -30px;
         z-index: 2;
+        pointer-events: none;
       }
 
       .shadow-wrapper {
