@@ -68,7 +68,7 @@ body {
   min-height: 100vh;
   height: 100vh;
   background: $blue;
-  transition: all 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease;
 
   &[data-shoe="1"] {
     background-color: #d5d8bc;
@@ -383,7 +383,7 @@ body {
       color: #112955;
       text-transform: uppercase;
       letter-spacing: 4rem;
-      transition: all 0.3s ease;
+      transition: color 0.3s ease;
     }
 
     &-header {
@@ -437,7 +437,7 @@ body {
         margin-top: 2rem;
         z-index: 3;
         border: 1px solid transparent;
-        transition: all 0.3s ease;
+        transition: background 0.3s ease, color 0.3s ease;
 
         &:hover {
           background-color: $dark-blue;
@@ -495,7 +495,7 @@ canvas#webgl {
       flex: 0 0 auto; // prevents shrinking, allows horizontal scroll
       min-width: 20rem; // or whatever fits your design
       // scroll-snap-align: start; // optional for snapping
-      transition: all .3s ease;
+      transition: color .3s ease;
 
       &-img {
         width: 12rem;
