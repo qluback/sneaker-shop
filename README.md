@@ -4,7 +4,7 @@ Project to learn implementing ThreeJS model mixed with HTML template... (Work in
 
 ![Preview project](./preview.jpg)
 
-3D Models from :
+3D Models from :<br>
 [Lassi Kaukonen](https://sketchfab.com/3d-models/nike-journey-run-4c7c6acd57c347058f91ca71ec6c379b)<br> 
 [mercurio22](https://sketchfab.com/3d-models/nike-air-max-90-premium-4b2280c16b67481cba0fe7ffacd77011)<br> 
 [quaz30](https://sketchfab.com/3d-models/nike-air-zoom-pegasus-36-00fd99e778c244c3bd3b65f99dad7cb2)<br> 
