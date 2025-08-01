@@ -4,6 +4,16 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import GUI from "lil-gui";
 
+import lottie from "lottie-web";
+
+const animation = lottie.loadAnimation({
+  container: document.getElementById("lottie-container"), // your DOM element
+  renderer: "svg",
+  loop: true,
+  autoplay: true,
+  path: "/loader.json", // path to your local .json file
+});
+
 // const gui = new GUI();
 
 const loadingManager = new THREE.LoadingManager();
@@ -74,48 +84,62 @@ const dataShoes = [
 
 function loadShoe(index) {
   document.querySelector(".products").classList.add("loading");
-  
-  const folder = `/shoe_${index}_gltf/`; // Folder containing .gltf + textures
-  const file = "scene.gltf";
-  loader.setPath(folder); // Important: sets path for ALL assets (GLTF + textures)
-  loader.load(
-    file,
-    function (gltf) {
-      shoe = gltf.scene;
-      const dataShoe = dataShoes[index - 1];
-      shoe.position.set(
-        dataShoe.position.x,
-        dataShoe.position.y,
-        dataShoe.position.z
-      );
-      shoe.rotation.set(
-        dataShoe.rotation.x,
-        dataShoe.rotation.y,
-        dataShoe.rotation.z
-      );
-      shoe.scale.set(dataShoe.scale.x, dataShoe.scale.y, dataShoe.scale.z);
-      directionalLight.intensity = dataShoe.light;
-      scene.add(shoe);
-      document.querySelector("body").dataset.shoe = index;
-      const axesHelper = new THREE.AxesHelper(4); // size = 1 unit
-      // shoe.add(axesHelper);
+  document.querySelector("canvas#webgl").classList.add("hidden");
+  setTimeout(() => {
+    document.querySelector(".loader").style.display = "block";
+  }, 300);
 
-      //         const rotationFolder = gui.addFolder('Shoe Rotation');
-      // rotationFolder.add(shoe.position, 'x', -10, 10, 0.1).name('X Axis');
-      // rotationFolder.add(shoe.position, 'y', -10, 10, 0.1).name('Y Axis');
-      // rotationFolder.add(shoe.position, 'z', -10, 10, 0.1).name('Z Axis');
-      // rotationFolder.add(shoe.rotation, 'x', -Math.PI, Math.PI).name('X Axis');
-      // rotationFolder.add(shoe.rotation, 'y', -Math.PI, Math.PI).name('Y Axis');
-      // rotationFolder.add(shoe.rotation, 'z', -Math.PI, Math.PI).name('Z Axis');
-      // rotationFolder.open();
-      document.querySelector(".products").classList.remove("loading");
-    },
-    undefined,
-    function (error) {
-      document.querySelector(".products").classList.remove("loading");
-      console.error(error);
+  setTimeout(() => {
+    if (shoe) {
+      scene.remove(shoe);
     }
-  );
+
+    const folder = `/shoe_${index}_gltf/`; // Folder containing .gltf + textures
+    const file = "scene.gltf";
+    loader.setPath(folder); // Important: sets path for ALL assets (GLTF + textures)
+    loader.load(
+      file,
+      function (gltf) {
+        shoe = gltf.scene;
+        const dataShoe = dataShoes[index - 1];
+        shoe.position.set(
+          dataShoe.position.x,
+          dataShoe.position.y,
+          dataShoe.position.z
+        );
+        shoe.rotation.set(
+          dataShoe.rotation.x,
+          dataShoe.rotation.y,
+          dataShoe.rotation.z
+        );
+        shoe.scale.set(dataShoe.scale.x, dataShoe.scale.y, dataShoe.scale.z);
+        directionalLight.intensity = dataShoe.light;
+        scene.add(shoe);
+        document.querySelector("body").dataset.shoe = index;
+        const axesHelper = new THREE.AxesHelper(4); // size = 1 unit
+        // shoe.add(axesHelper);
+
+        //         const rotationFolder = gui.addFolder('Shoe Rotation');
+        // rotationFolder.add(shoe.position, 'x', -10, 10, 0.1).name('X Axis');
+        // rotationFolder.add(shoe.position, 'y', -10, 10, 0.1).name('Y Axis');
+        // rotationFolder.add(shoe.position, 'z', -10, 10, 0.1).name('Z Axis');
+        // rotationFolder.add(shoe.rotation, 'x', -Math.PI, Math.PI).name('X Axis');
+        // rotationFolder.add(shoe.rotation, 'y', -Math.PI, Math.PI).name('Y Axis');
+        // rotationFolder.add(shoe.rotation, 'z', -Math.PI, Math.PI).name('Z Axis');
+        // rotationFolder.open();
+        document.querySelector(".products").classList.remove("loading");
+        document.querySelector("canvas#webgl").classList.remove("hidden");
+        document.querySelector(".loader").style.display = "none";
+      },
+      undefined,
+      function (error) {
+        document.querySelector(".products").classList.remove("loading");
+        document.querySelector("canvas#webgl").classList.add("hidden");
+        document.querySelector(".loader").style.display = "none";
+        console.error(error);
+      }
+    );
+  }, 300);
 }
 
 loadShoe(1);
@@ -124,8 +148,9 @@ const productItems = document.querySelectorAll(".products-list-item");
 
 productItems.forEach((item) => {
   item.addEventListener("click", (event) => {
-    scene.remove(shoe);
+    // const index = event.currentTarget.dataset.index;
     loadShoe(event.currentTarget.dataset.index);
+    console.log("out");
   });
 });
 
@@ -177,12 +202,12 @@ window.addEventListener("resize", () => {
   camera.updateProjectionMatrix();
 
   if (window.innerWidth < 640) {
-  camera.position.z = 11;
-} else {
-  camera.position.z = 8;
-}
+    camera.position.z = 11;
+  } else {
+    camera.position.z = 8;
+  }
 
-console.log(camera.position);
+  console.log(camera.position);
 
   // Update renderer
   renderer.setSize(sizes.width, sizes.height);

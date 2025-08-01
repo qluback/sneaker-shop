@@ -522,9 +522,15 @@ body {
   align-items: center;
 
   @media (max-width: 640px) {
-              min-height: 90vh;
+    min-height: 90vh;
+  }
 
-    }
+  .loader {
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    z-index: 5;
+  }
 
   &:hover {
     cursor: url("/icon-3d-view.png") 25 25, auto;
@@ -717,6 +723,7 @@ body {
     left: 0;
     z-index: 3;
     background: transparent;
+    transition: opacity 0.3s ease;
 
     @media (max-width: 1280px) {
       top: 5rem;
@@ -726,6 +733,10 @@ body {
     @media (max-width: 1024px) {
       top: 0;
       left: 0;
+    }
+
+    &.hidden {
+      opacity: 0;
     }
   }
 }
