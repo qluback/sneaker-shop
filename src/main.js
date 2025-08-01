@@ -182,6 +182,8 @@ window.addEventListener("resize", () => {
   camera.position.z = 8;
 }
 
+console.log(camera.position);
+
   // Update renderer
   renderer.setSize(sizes.width, sizes.height);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
