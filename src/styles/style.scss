@@ -66,7 +66,8 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  height: 100vh;
+  // min-height: 1000px;
+  // height: 100vh;
   background: $blue;
   transition: background 0.3s ease, color 0.3s ease;
 
@@ -240,16 +241,16 @@ body {
       &-nav {
         &-item {
           &:hover {
-            color: #b2433f;
+            color: #151515;
           }
           &:before {
-            background-color: #b2433f;
+            background-color: #151515;
           }
         }
       }
       &-actions {
         &-btn--search {
-          background: #b2433f;
+          background: #151515;
         }
       }
     }
@@ -261,27 +262,27 @@ body {
 
       &-product {
         &-name {
-          color: #b2433f;
+          color: white;
         }
 
         &-button {
-          color: #b2433f;
+          color: #151515;
 
           &:hover {
-            background-color: #b2433f;
+            background-color: #151515;
             color: white;
-            border: 1px solid #b2433f;
+            border: 1px solid #151515;
           }
         }
       }
     }
 
     .products {
-      border-color: #b2433f;
+      border-color: #151515;
 
       &-list {
         &-item {
-          color: #b2433f;
+          color: #151515;
         }
       }
     }
@@ -408,7 +409,7 @@ body {
 
 .header {
   width: calc(100% - 10rem);
-  min-height: 100px;
+  height: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -417,9 +418,12 @@ body {
     width: calc(100% - 4rem);
   }
 
-  @media (max-width: 640px) {
-    min-height: 60px;
+  @media (max-width: 900px) {
     justify-content: center;
+  }
+
+  @media (max-width: 640px) {
+    height: 60px;
   }
 
   &-logo {
@@ -440,7 +444,7 @@ body {
       gap: 0;
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 900px) {
       display: none;
     }
 
@@ -484,7 +488,7 @@ body {
     align-items: center;
     gap: 2rem;
 
-    @media (max-width: 640px) {
+    @media (max-width: 900px) {
       display: none;
     }
 
@@ -508,8 +512,10 @@ body {
 }
 
 .canvas-container {
+  flex: 1;
   position: relative;
   width: 100%;
+  min-height: 750px;
   height: 100%; // or whatever height you want
   overflow: hidden;
   display: flex;
@@ -552,7 +558,17 @@ body {
       letter-spacing: 4rem;
       transition: color 0.3s ease;
 
+      @media (max-width: 1024px) {
+        font-size: 30rem;
+        letter-spacing: 2rem;
+      }
+
       @media (max-width: 640px) {
+        font-size: 20rem;
+        letter-spacing: 1rem;
+      }
+
+      @media (max-width: 400px) {
         font-size: 12rem;
         letter-spacing: 1rem;
       }
