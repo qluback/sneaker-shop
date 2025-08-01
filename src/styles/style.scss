@@ -521,6 +521,10 @@ body {
   display: flex;
   align-items: center;
 
+  @media (max-width: 640px) {
+    min-height: 90vh;
+  }
+
   &:hover {
     cursor: url("/icon-3d-view.png") 25 25, auto;
     // cursor: url("/icon-rotate.png") 25 25, auto;
