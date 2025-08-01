@@ -522,8 +522,9 @@ body {
   align-items: center;
 
   @media (max-width: 640px) {
-    min-height: 90vh;
-  }
+              min-height: 90vh;
+
+    }
 
   &:hover {
     cursor: url("/icon-3d-view.png") 25 25, auto;
@@ -735,6 +736,7 @@ body {
   display: flex;
   justify-content: center;
   position: relative;
+  transition: border-bottom 0.3s ease;
 
   &.loading {
     .products-list-item {

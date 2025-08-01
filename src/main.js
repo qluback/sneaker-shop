@@ -160,8 +160,11 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 // document.body.appendChild(renderer.domElement);
-
-camera.position.z = 8;
+if (window.innerWidth < 640) {
+  camera.position.z = 11;
+} else {
+  camera.position.z = 8;
+}
 camera.position.x = 0;
 
 window.addEventListener("resize", () => {
@@ -172,6 +175,12 @@ window.addEventListener("resize", () => {
   // Update camera
   camera.aspect = sizes.width / sizes.height;
   camera.updateProjectionMatrix();
+
+  if (window.innerWidth < 640) {
+  camera.position.z = 11;
+} else {
+  camera.position.z = 8;
+}
 
   // Update renderer
   renderer.setSize(sizes.width, sizes.height);
