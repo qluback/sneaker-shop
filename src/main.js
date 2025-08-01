@@ -23,36 +23,48 @@ let shoe = null;
 
 const dataShoes = [
   {
+    name: "Nike Journey Run",
+    price: 120,
     position: { x: 1.1, y: -1.4, z: -0.6 },
     rotation: { x: 0.753, y: -1.05, z: 0.56 },
     scale: { x: 1.15, y: 1.15, z: 1.15 },
     light: 4,
   },
   {
+    name: "Nike Air Max 90",
+    price: 245,
     position: { x: 0.8, y: -1.3, z: 0 },
     rotation: { x: -2.01, y: -2.06, z: -2.26 },
     scale: { x: 23, y: 23, z: 23 },
     light: 4,
   },
   {
+    name: "Nike Air Zoom Pegasus 36",
+    price: 180,
     position: { x: -0.25, y: 0, z: 0 },
     rotation: { x: 0.942, y: -0.992, z: 0.879 },
     scale: { x: 4, y: 4, z: -4 },
     light: 4,
   },
   {
+    name: "Nike Air Zoom Citizen",
+    price: 150,
     position: { x: 0.7, y: -1.6, z: 0 },
     rotation: { x: 0, y: 0.251, z: 0.42 },
     scale: { x: 0.265, y: 0.265, z: 0.265 },
     light: 4,
   },
   {
+    name: "Nike Air Jordan",
+    price: 295,
     position: { x: 0, y: 0.75, z: 0 },
     scale: { x: 1, y: 1, z: 1 },
     rotation: { x: 0, y: (-Math.PI * 7) / 8, z: -Math.PI / 8 },
     light: 4,
   },
   {
+    name: "Nike TC 7900 Sail",
+    price: 225,
     position: { x: -0.5, y: 0.9, z: 0 },
     rotation: { x: 1.05, y: -1.03, z: 0.98 },
     scale: { x: 11.7, y: 11.7, z: 11.7 },

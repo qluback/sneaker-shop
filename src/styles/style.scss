@@ -75,9 +75,19 @@ body {
     color: #fff;
 
     .header {
+      &-nav {
+        &-item {
+          &:hover {
+            color: #62625a;
+          }
+          &:before {
+            background-color: #62625a;
+          }
+        }
+      }
       &-actions {
         &-btn--search {
-          background: #828175;
+          background: #62625a;
         }
       }
     }
@@ -89,25 +99,27 @@ body {
 
       &-product {
         &-name {
-          color: #828175;
+          color: #62625a;
         }
 
         &-button {
-          color: #828175;
+          color: #62625a;
 
           &:hover {
-            background-color: #828175;
+            background-color: #62625a;
             color: white;
-            border: 1px solid #828175;
+            border: 1px solid #62625a;
           }
         }
       }
     }
 
     .products {
+      border-color: #62625a;
+
       &-list {
         &-item {
-          color: #828175;
+          color: #62625a;
         }
       }
     }
@@ -117,6 +129,16 @@ body {
     color: #fff;
 
     .header {
+      &-nav {
+        &-item {
+          &:hover {
+            color: #e8972f;
+          }
+          &:before {
+            background-color: #e8972f;
+          }
+        }
+      }
       &-actions {
         &-btn--search {
           background: #e8972f;
@@ -135,30 +157,42 @@ body {
         }
 
         &-button {
-          color: #2e8fd7;
+          color: #e8972f;
 
           &:hover {
-            background-color: #2e8fd7;
+            background-color: #e8972f;
             color: white;
-            border: 1px solid #2e8fd7;
+            border: 1px solid #e8972f;
           }
         }
       }
     }
 
     .products {
+      border-color: #e8972f;
+
       &-list {
         &-item {
-          color: #2e8fd7;
+          color: #e8972f;
         }
       }
     }
   }
   &[data-shoe="3"] {
-    background-color: #6e6d73;
+    background-color: #b5b4b8;
     color: #fff;
 
     .header {
+      &-nav {
+        &-item {
+          &:hover {
+            color: #232323;
+          }
+          &:before {
+            background-color: #232323;
+          }
+        }
+      }
       &-actions {
         &-btn--search {
           background: #232323;
@@ -168,7 +202,7 @@ body {
 
     .hero {
       &-background {
-        color: #646369;
+        color: #a2a2a5;
       }
 
       &-product {
@@ -189,6 +223,8 @@ body {
     }
 
     .products {
+      border-color: #232323;
+
       &-list {
         &-item {
           color: #232323;
@@ -201,6 +237,16 @@ body {
     color: #fff;
 
     .header {
+      &-nav {
+        &-item {
+          &:hover {
+            color: #b2433f;
+          }
+          &:before {
+            background-color: #b2433f;
+          }
+        }
+      }
       &-actions {
         &-btn--search {
           background: #b2433f;
@@ -231,6 +277,8 @@ body {
     }
 
     .products {
+      border-color: #b2433f;
+
       &-list {
         &-item {
           color: #b2433f;
@@ -243,6 +291,16 @@ body {
     color: #333;
 
     .header {
+      &-nav {
+        &-item {
+          &:hover {
+            color: #080807;
+          }
+          &:before {
+            background-color: #080807;
+          }
+        }
+      }
       &-logo {
         filter: invert(1);
       }
@@ -283,6 +341,8 @@ body {
     }
 
     .products {
+      border-color: #080807;
+
       &-list {
         &-item {
           color: #080807;
@@ -295,6 +355,16 @@ body {
     color: #fff;
 
     .header {
+      &-nav {
+        &-item {
+          &:hover {
+            color: #444943;
+          }
+          &:before {
+            background-color: #444943;
+          }
+        }
+      }
       &-actions {
         &-btn--search {
           background: #444943;
@@ -325,6 +395,8 @@ body {
     }
 
     .products {
+      border-color: #444943;
+
       &-list {
         &-item {
           color: #444943;
@@ -360,6 +432,7 @@ body {
       display: flex;
       align-items: center;
       cursor: pointer;
+      transition: color 0.3s ease;
 
       &:before {
         content: "";
@@ -368,7 +441,7 @@ body {
         left: 0;
         height: 3px;
         width: 100%;
-        background-color: $orange;
+        // background-color: $orange;
         opacity: 0;
         transition: opacity 0.3s ease;
       }
@@ -392,9 +465,10 @@ body {
       border: none;
       height: 4rem;
       width: 4rem;
+      transition: box-shadow 0.3s ease;
 
-      &--orange {
-        background: $orange;
+      &:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       }
 
       img {
@@ -541,9 +615,13 @@ canvas#webgl {
     padding: 0.5rem 1rem;
     border-radius: 9999px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background 0.3s ease, opacity 0.3s ease;
+    transition: background 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
     opacity: 1;
     pointer-events: auto;
+
+    &:hover {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
 
     &.hidden {
       opacity: 0;
@@ -601,10 +679,14 @@ canvas#webgl {
       flex: 0 0 auto; // prevents shrinking, allows horizontal scroll
       min-width: 20rem; // or whatever fits your design
       // scroll-snap-align: start; // optional for snapping
-      transition: color 0.3s ease;
+      transition: color 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
 
       &:hover {
-        .products-list-item-img, .shadow-wrapper img {
+        box-shadow: 0px 8px 20px 10px rgba(0, 0, 0, 0.8);
+
+        .products-list-item-img,
+        .shadow-wrapper img {
           transform: translate(-10px, -10px) rotate(10deg);
           transform-origin: bottom left;
         }
