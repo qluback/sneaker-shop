@@ -186,30 +186,29 @@ renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 // document.body.appendChild(renderer.domElement);
 if (window.innerWidth < 640) {
-  camera.position.z = 11;
+  camera.position.set(0, 0, 11);
 } else {
-  camera.position.z = 8;
+  camera.position.set(0, 0, 8);
 }
-camera.position.x = 0;
 
+let lastWidth = window.innerWidth;
 window.addEventListener("resize", () => {
-  // Update sizes
   sizes.width = canvasContainer.clientWidth;
   sizes.height = canvasContainer.clientHeight;
 
-  // Update camera
   camera.aspect = sizes.width / sizes.height;
   camera.updateProjectionMatrix();
 
-  if (window.innerWidth < 640) {
-    camera.position.z = 11;
-  } else {
-    camera.position.z = 8;
+  if (window.innerWidth !== lastWidth) {
+    if (window.innerWidth < 640) {
+      camera.position.set(0, 0, 11);
+    } else {
+      camera.position.set(0, 0, 8);
+    }
+    lastWidth = window.innerWidth;
   }
+  // console.log(camera.position.z); 
 
-  console.log(camera.position);
-
-  // Update renderer
   renderer.setSize(sizes.width, sizes.height);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 });
